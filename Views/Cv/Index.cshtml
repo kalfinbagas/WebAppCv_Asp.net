@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<CvWebApp.Models.CV>
+@{
+    //ViewData["TEST"] = "Daftar Karyawan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Daftar CV</h1>
+<a class="btn btn-danger" asp-controller="CV" asp-action="Create">Tambah CV Pendaftar</a>
+<br>
+<br>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nomor Karyawan</th>
+            <th>Nama Karyawan</th>
+            <th>Work Experience</th>
+            <th>Addrees</th>
+            <th>Skill1</th>
+            <th>Skill2</th>
+            <th>Skill3</th>
+
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var CV in Model)
+        {
+
+            <tr>
+                <td>@CV.Name</td>
+                <td>@CV.Email</td>
+                <td>@CV.WorkExperience</td>
+                <td>@CV.Address</td>
+                <td>@CV.Skill1</td>
+                <td>@CV.Skill2</td>
+                <td>@CV.Skill3</td>
+
+
+
+                <td>
+                    @*<a class="btn btn-primary" href="@Url.Action("EditKaryawan", "Karyawan")" id="@karyawan.Id">Edit</a>
+                    <a class="btn btn-danger" href="@Url.Action("EditKaryawan", "Karyawan")" id="btndelete.@karyawan.Id">Hapus</a>*@
+
+                    <a asp-controller="Karyawan" asp-action="EditKaryawan" asp-route-id="@CV.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@CV.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+
